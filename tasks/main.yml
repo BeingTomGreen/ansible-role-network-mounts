@@ -1,0 +1,57 @@
+---
+
+- name: Configure packages
+  when: (network_mounts_install_nfs_utils | bool) or (network_mounts_install_smb_utils | bool)
+  block:
+    - name: Set mount packages
+      ansible.builtin.set_fact:
+        _nfs_package: "{{ network_mounts_packages[ansible_distribution]['nfs'] }}"
+        _smb_package: "{{ network_mounts_packages[ansible_distribution]['smb'] }}"
+
+    - name: Ensure nfs packages are present
+      ansible.builtin.package:
+        name: "{{ _nfs_package }}"
+        state: present
+      when: network_mounts_install_nfs_utils | bool
+
+    - name: Ensure cifs/smb packages are present
+      ansible.builtin.package:
+        name: "{{ _smb_package }}"
+        state: present
+      when: network_mounts_install_smb_utils | bool
+
+- name: Configure the mounts
+  when: network_mounts | length > 0
+  block:
+    - name: Gather host mount points
+      ansible.builtin.setup:
+        filter: ansible_mounts
+
+    - name: Ensure the network_mounts targets exist
+      ansible.builtin.file:
+        path: "{{ item.path }}"
+        owner: "{{ network_mounts_user | default(omit) }}"
+        group: "{{ network_mounts_group | default(omit) }}"
+        state: directory
+        mode: '0755'
+      loop: "{{ network_mounts }}"
+      when: item.path not in ansible_mounts | map(attribute='mount') | list
+      loop_control:
+        label: "{{ item.path }}"
+
+    - name: Ensure the network_mounts are in the desired state
+      ansible.posix.mount:
+        backup: "{{ item.backup | default(omit) }}"
+        boot: "{{ item.boot | default(omit) }}"
+        dump: "{{ item.dump | default(omit) }}"
+        fstab: "{{ item.fstab | default(omit) }}"
+        fstype: "{{ item.fstype | default('nfs') }}"
+        opts: "{{ item.opts | default('defaults') }}"
+        opts_no_log: "{{ item.opts_no_log | default(omit) }}"
+        passno: "{{ item.passno | default(omit) }}"
+        path: "{{ item.path }}"
+        src: "{{ item.src }}"
+        state: "{{ item.state | default('mounted') }}"
+      loop: "{{ network_mounts }}"
+      loop_control:
+        label: "{{ item.path }}"

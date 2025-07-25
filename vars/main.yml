@@ -1,0 +1,12 @@
+---
+
+network_mounts_packages:
+  Debian:
+    nfs: nfs-common
+    smb: cifs-utils
+  RedHat:
+    nfs: nfs-utils
+    smb: cifs-utils
+  Ubuntu:
+    nfs: nfs-common
+    smb: cifs-utils

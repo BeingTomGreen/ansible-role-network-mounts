@@ -1,0 +1,30 @@
+---
+
+# Do you want cifs-utils installed
+network_mounts_install_smb_utils: false
+
+# Do you want nfs-utils package installed (nfs-common) on Debian
+network_mounts_install_nfs_utils: false
+
+# Define the user who should own the target filesystem objects
+network_mounts_user:
+
+# Define the group who should own the target filesystem objects
+network_mounts_group:
+
+# Configure the mounts
+network_mounts: []
+
+# network_mounts:
+#  - src: "192.168.69.11:/mnt/tank/media/tv"
+#    path: "/mnt/tank/media/tv"
+#    fstype: "nfs"
+#    opts: "defaults"
+#    state: "mounted"
+#  - src: "192.168.69.11:/mnt/tank/media/film"
+#    path: "/mnt/tank/media/film"
+#    fstype: "cifs"
+#    opts: "defaults"
+#    state: "mounted"
+#  - src: "192.168.69.11:/mnt/tank/media/music"
+#    state: "absent"
