@@ -2,10 +2,6 @@
 
 A simple Ansible role to install and configure NFS & SMB mounts on Debian/Ubuntu based systems.
 
-## TODO
-
-At some point I assume I'll need a mount that isn't NFS
-
 ## Installation & usage
 
 Given that Galaxy seems to have abandoned roles, I suggest referencing this repository directly in your projects `requirements.yml`:

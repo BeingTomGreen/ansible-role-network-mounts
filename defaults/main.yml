@@ -16,15 +16,11 @@ network_mounts_group:
 network_mounts: []
 
 # network_mounts:
-#  - src: "192.168.69.11:/mnt/tank/media/tv"
-#    path: "/mnt/tank/media/tv"
-#    fstype: "nfs"
-#    opts: "defaults"
-#    state: "mounted"
-#  - src: "192.168.69.11:/mnt/tank/media/film"
-#    path: "/mnt/tank/media/film"
-#    fstype: "cifs"
-#    opts: "defaults"
-#    state: "mounted"
-#  - src: "192.168.69.11:/mnt/tank/media/music"
-#    state: "absent"
+#  - src: '192.168.6.9:/mnt/share'
+#    path: '/mnt/nfs-server/share'
+#    fstype: 'nfs'
+#  - src: '//smb-server/share'
+#    path: '/mnt/smb-server/share'
+#    fstype: 'cifs'
+#    opts: 'username=foo,password=bar,uid=1000,gid=1000'
+#    state: 'absent'
