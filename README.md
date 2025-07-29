@@ -40,13 +40,16 @@ Now you're free to use it within your project:
 
     # Our mounts
     network_mounts:
-      - src: '192.168.6.9:/mnt/share'
-        path: '/mnt/nfs-server/share'
+      - path: '/mnt/nfs-server/share'
+        src: '192.168.6.9:/mnt/share'
         fstype: 'nfs'
-      - src: '//smb-server/share'
-        path: '/mnt/smb-server/share'
+        state: 'present'
+      - path: '/mnt/smb-server/share'
+        src: '//smb-server/share'
         fstype: 'cifs'
         opts: 'username=foo,password=bar,uid=1000,gid=1000'
+        state: 'present'
+      - path: '/mnt/nfs-server/share'
         state: 'absent'
 
   roles:

@@ -14,13 +14,16 @@ network_mounts_group:
 
 # Configure the mounts
 network_mounts: []
-
+# Example:
 # network_mounts:
-#  - src: '192.168.6.9:/mnt/share'
-#    path: '/mnt/nfs-server/share'
-#    fstype: 'nfs'
-#  - src: '//smb-server/share'
-#    path: '/mnt/smb-server/share'
-#    fstype: 'cifs'
-#    opts: 'username=foo,password=bar,uid=1000,gid=1000'
-#    state: 'absent'
+#   - path: '/mnt/nfs-server/share'
+#     src: '192.168.6.9:/mnt/share'
+#     fstype: 'nfs'
+#     state: 'present'
+#   - path: '/mnt/smb-server/share'
+#     src: '//smb-server/share'
+#     fstype: 'cifs'
+#     opts: 'username=foo,password=bar,uid=1000,gid=1000'
+#     state: 'present'
+#   - path: '/mnt/nfs-server/share'
+#     state: 'absent'
