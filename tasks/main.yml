@@ -35,7 +35,9 @@
         state: directory
         mode: '0755'
       loop: "{{ network_mounts }}"
-      when: item.path not in ansible_mounts | map(attribute='mount') | list
+      when:
+        - item.state is not defined or item.state != 'absent'
+        - item.path not in ansible_mounts | map(attribute='mount') | list
       loop_control:
         label: "{{ item.path }}"
 
