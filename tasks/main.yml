@@ -56,4 +56,4 @@
         state: "{{ item.state | default('mounted') }}"
       loop: "{{ network_mounts }}"
       loop_control:
-        label: "{{ item.path }}"
+        label: "{{ item.src }}"
