@@ -2,7 +2,7 @@
 
 galaxy_info:
   author: Tom Green
-  description: A simple Ansible role to install and configure NFS & SMB/CIFS mounts on Debian/Ubuntu based systems.
+  description: A simple ansible role to install and configure NFS & SMB/CIFS mounts on Debian/Ubuntu based systems.
 
   role_name: network_mounts
   namespace: beingtomgreen

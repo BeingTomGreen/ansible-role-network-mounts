@@ -1,6 +1,6 @@
 # beingtomgreen.network_mounts
 
- A simple Ansible role to install and configure NFS & SMB/CIFS mounts on Debian/Ubuntu based systems.
+A simple ansible role to install and configure NFS & SMB/CIFS mounts on Debian/Ubuntu based systems.
 
 ## Installation
 
