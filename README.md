@@ -2,7 +2,7 @@
 
 A simple ansible role to install and configure NFS & SMB/CIFS mounts on Debian/Ubuntu based systems.
 
-## Installation
+## Installation & usage
 
 Given that Galaxy seems to have abandoned roles, I suggest referencing this repository directly in your projects `requirements.yml`:
 
