@@ -5,8 +5,8 @@
   block:
     - name: Set mount packages
       ansible.builtin.set_fact:
-        _nfs_package: "{{ network_mounts_packages[ansible_distribution]['nfs'] }}"
-        _smb_package: "{{ network_mounts_packages[ansible_distribution]['smb'] }}"
+        _nfs_package: "{{ network_mounts_packages[ansible_facts['distribution_release']]['nfs'] }}"
+        _smb_package: "{{ network_mounts_packages[ansible_facts['distribution_release']]['smb'] }}"
 
     - name: Ensure nfs packages are present
       ansible.builtin.package:
