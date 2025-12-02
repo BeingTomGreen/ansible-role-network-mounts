@@ -25,7 +25,7 @@
   block:
     - name: Gather host mount points
       ansible.builtin.setup:
-        filter: ansible_mounts
+        filter: mounts
 
     - name: Ensure the network_mounts targets exist
       ansible.builtin.file:
@@ -37,7 +37,7 @@
       loop: "{{ network_mounts }}"
       when:
         - item.state is not defined or item.state != 'absent'
-        - item.path not in ansible_mounts | map(attribute='mount') | list
+        - item.path not in ansible_facts['mounts'] | map(attribute='mount') | list
       loop_control:
         label: "{{ item.path }}"
 
